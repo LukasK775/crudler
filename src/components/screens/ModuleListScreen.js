@@ -1,16 +1,21 @@
-import { ScrollView, StyleSheet } from "react-native";
+import { useState } from "react";
+import { StyleSheet } from "react-native";
 import Screen from "../layout/Screens";
 import ModuleList from "../entity/modules/ModuleList.js";
 import initialModules from "../../data/modules.js";
 
-const ModuleListScreen = () => {
+const ModuleListScreen = ({ navigation }) => {
   // Initialisations
-  const modules = initialModules;
+  const [modules, setModules] = useState(initialModules);
 
   // State
 
   // Handlers
-  const handleSelect = (module) => alert(`Item ${module.ModuleCode} Selected`);
+  const handleSelect = (module) =>
+    navigation.navigate("ModuleViewScreen", { module });
+
+  const handleDelete = (module) =>
+    setModules(modules.filter((item) => item.ModuleID !== module.ModuleID));
 
   // View
   return (
@@ -20,16 +25,6 @@ const ModuleListScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {},
-  item: {
-    paddingVertical: 15,
-    borderTopWidth: 1,
-    borderColor: "lightgray",
-  },
-  text: {
-    fontSize: 16,
-  },
-});
+const styles = StyleSheet.create({});
 
 export default ModuleListScreen;
