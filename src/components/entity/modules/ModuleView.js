@@ -3,7 +3,7 @@ import FullWidthImage from "react-native-fullwidth-image";
 import { Button, ButtonTray } from "../../UI/Button";
 import Icons from "../../UI/Icons";
 
-const ModuleView = ({ module, onDelete }) => {
+const ModuleView = ({ module, onDelete, onModify }) => {
   // Init
   // State
   // Handlers
@@ -37,7 +37,7 @@ const ModuleView = ({ module, onDelete }) => {
         </Text>
 
         <ButtonTray>
-          <Button icon={<Icons.Edit />} label="Modify" />
+          <Button icon={<Icons.Edit />} label="Modify" onClick={onModify} />
           <Button
             icon={<Icons.Delete />}
             label="Delete"

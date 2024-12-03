@@ -1,17 +1,26 @@
-import { StyleSheet, Text } from 'react-native';
-import Screen from '../layout/Screens';
+import { StyleSheet, Text } from "react-native";
+import Screen from "../layout/Screens";
+import ModuleForm from "../entity/modules/ModuleForm";
 
-const ModuleModifyScreen = () => {
+const ModuleModifyScreen = ({ navigation, route }) => {
   // Initialisations
+  const { module, onModify } = route.params;
+
   // State
   // Handlers
+  const handleCancel = () => navigation.goBack();
+
   // View
   return (
     <Screen>
-      <Text>Modify</Text>
+      <ModuleForm
+        originalModule={module}
+        onSubmit={onModify}
+        onCancel={handleCancel}
+      />
     </Screen>
   );
-}
+};
 
 const styles = StyleSheet.create({});
 
